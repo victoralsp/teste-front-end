@@ -1,0 +1,83 @@
+.navCategorias {
+  width: 100%;
+  background-color: $color-white;
+  border-top: 1px solid $color-border-light;
+  box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.05);
+}
+
+.limiteConteudo {
+  max-width: $max-width-container;
+  margin: 0 auto;
+}
+
+.listaCategorias {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  height: 40px;
+  max-width: 1141px;
+  margin: 0 auto;
+}
+
+.linkCategoria {
+  text-decoration: none;
+  font-family: $font-main;
+  font-size: 12px;
+  font-weight: $weight-semibold;
+  color: $color-benefit-gray;
+  transition: color 0.2s;
+  letter-spacing: 0.05em;
+}
+
+.linkDestaque {
+  color: $color-highlight-purple;
+}
+
+.itemAssinatura {
+  display: flex;
+  align-items: center;
+
+  .linkAssinatura {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-family: $font-main;
+    font-size: 12px;
+    font-weight: $weight-semibold;
+    color: $color-benefit-gray;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .navCategorias {
+    padding: 0 .5em;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .listaCategorias {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 20px;
+    gap: 20px;
+    height: auto;
+  }
+
+  .itemCategoria {
+    width: 100%;
+    border-bottom: 1px solid $color-border-light;
+    padding-bottom: 10px;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}

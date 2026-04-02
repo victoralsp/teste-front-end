@@ -1,0 +1,138 @@
+.header {
+  max-width: $max-width-container;
+  margin: 0 auto;
+}
+
+.headerMain {
+  width: 100%;
+  padding: 0.75em 0;
+  background-color: $color-white;
+}
+
+.contentLimit {
+  max-width: $max-width-container;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto 1fr auto; 
+  grid-template-areas: "logo search actions";
+  gap: 40px;
+}
+
+.mobileMenu {
+  grid-area: menu;
+  display: none;
+  background: none;
+  border: none;
+}
+
+.logo {
+  grid-area: logo;
+  display: block;
+  width: $width-logo;
+  height: $height-logo;
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    max-width: 139px;
+  }
+}
+
+:global(.searchContainer), 
+.searchWrapper { 
+  grid-area: search; 
+  width: 100%;
+}
+
+.userActions {
+  grid-area: actions;
+
+  .actionList {
+    display: flex;
+    align-items: center;
+    gap: 1.969em; 
+    max-height: 2em;
+    list-style: none;
+
+    img {
+      width: $size-icon-header;
+      height: $size-icon-header;
+      cursor: pointer;
+      transition: transform 0.2s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    .iconeBoxHeader {
+      width: $size-icon-box-header;
+    }
+  }
+}
+
+.categoryWrapper {
+  width: 100%;
+  background-color: $color-white;
+}
+
+@media screen and (max-width: 1300px) {
+  .headerMain {
+    padding: 0.75em .5em;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .header {
+    box-shadow: 0 0px 20px #00000017;
+  }
+
+  .contentLimit {
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-areas: 
+      "menu logo actions"
+      "search search search"; 
+    gap: 15px;
+    padding: 0.75em 15px;
+  }
+
+  .mobileMenu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    img { width: 32px; }
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    width: auto;
+    img { max-width: 100px; } 
+  }
+
+  .userActions {
+    .actionList {
+      justify-content: flex-end;
+      gap: 0;
+
+      li:not(:last-child) {
+        display: none;
+      }
+    }
+  }
+
+  .categoryWrapper {
+    display: none; 
+    position: absolute;
+    left: 0;
+    z-index: 999;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    
+    &.menuVisible {
+      display: block; 
+    }
+  }
+}
