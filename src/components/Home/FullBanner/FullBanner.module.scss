@@ -104,3 +104,8 @@
     text-align: center;
   }
 }
+@media screen and (min-width: 1440px) {
+  .container {
+    margin: 0 auto;
+  }
+}
