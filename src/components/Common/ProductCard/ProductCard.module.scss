@@ -1,0 +1,97 @@
+.cardContainer {
+  background-color: $color-white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.22);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.imageWrapper {
+  width: 100%;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+
+  .productImage {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; 
+}
+
+.productName {
+  font-family: $font-main;
+  font-size: 15px;
+  color: #3F3F40;
+  font-weight: $weight-medium;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.priceContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+
+.originalPrice {
+  font-size: 14px;
+  color: #808080;
+  text-decoration: line-through;
+}
+
+.currentPrice {
+  font-size: 20px;
+  font-weight: $weight-bold;
+  color: #3F3F40;
+}
+
+.installmentsInfo {
+  font-size: 12px;
+  color: #3F3F40;
+  margin-bottom: 8px;
+}
+
+.freeShippingLabel {
+  font-size: 12px;
+  color: $color-highlight-purple;
+  font-weight: $weight-semibold;
+  margin-bottom: 15px;
+}
+
+.buyButton {
+  margin-top: auto; 
+  width: 100%;
+  padding: 12px 0;
+  background-color: #3442B5; 
+  color: $color-white;
+  border: none;
+  border-radius: 4px;
+  font-weight: $weight-bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: filter 0.2s;
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+}

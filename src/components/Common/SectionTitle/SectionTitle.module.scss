@@ -1,0 +1,43 @@
+.titleContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0 20px;
+  position: relative;
+
+  &::before, &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: #DEDEDE;
+    max-width: 360px; 
+  }
+}
+
+.sectionTitle {
+  font-family: $font-main;
+  font-size: 30px;
+  font-weight: $weight-bold;
+  color: #3442B5; 
+  margin: 0 30px; 
+  text-align: center;
+}
+
+@media (max-width: 1300px) {
+  .titleContainer {
+    margin: 40px 1em;
+  } 
+}
+
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 24px;
+    // margin: 0 15px;
+  }
+  
+  .titleContainer::before, 
+  .titleContainer::after {
+    display: none; 
+  }
+}
