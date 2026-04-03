@@ -1,6 +1,6 @@
 import './App.css'
 import { Newsletter } from './components/Common/Newsletter/Newsletter'
-import { Footer } from './components/Layout/Header/Footer/Footer'
+import { Footer } from './components/Layout/Footer/Footer'
 import { Header } from './components/Layout/Header/Header/Header'
 import { Home } from './pages/Home'
 
