@@ -48,7 +48,7 @@ export const Header = () => {
           <nav className={styles.userActions}>
             <ul className={styles.actionList}>
               <li className={styles.desktopOnly}>
-                <img src={iconBox} alt="Meus pedidos" />
+                <img src={iconBox} alt="Meus pedidos" className={styles.myOrdersIcone} />
               </li>
               <li className={styles.desktopOnly}>
                 <img src={iconHeart} alt="Favoritos" />
