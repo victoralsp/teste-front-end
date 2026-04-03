@@ -17,6 +17,7 @@ export const Header = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
+    <div className={styles.stickyHeader}>       
     <header className={styles.header}>
       <TopBar />
 
@@ -75,5 +76,6 @@ export const Header = () => {
         <CategoryNav />
       </div>
     </header>
+     </div>
   );
 };
