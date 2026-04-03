@@ -1,0 +1,118 @@
+.newsletterSection {
+  width: 100%;
+  background-color: #271C47;
+  padding: 14px 1em;
+  min-height: 162px;
+  display: flex;
+  align-items: center;
+  margin-top: 2em;
+}
+
+.container {
+  width: 100%;
+  max-width: $max-width-container; 
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.title {
+  font-family: $font-secundary;
+  font-size: 2em;
+  font-weight: $weight-semibold;
+  color: $color-white;
+  margin-bottom: 8px;
+  line-height: 120%;
+}
+
+.description {
+  font-family: $font-main;
+  font-size: 14px;
+  font-weight: $weight-light;
+  color: $color-white;
+  line-height: 18px;
+}
+
+.formRight {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 1;
+}
+
+.inputsWrapper {
+  display: flex;
+  gap: 8px;
+  justify-content: end;
+}
+
+.input {
+  height: 42px;
+  padding: 0 20px;
+  border-radius: 8px;
+  border: 1px solid $color-border-light;
+  font-family: $font-main;
+  font-size: 14px;
+  outline: none;
+  width: 233px;
+
+  &::placeholder {
+    color: #676767;
+  }
+}
+
+.submitButton {
+  height: 42px;
+  min-width: 157px;
+  background-color: #F7CA11;
+  color: #161615;
+  border: none;
+  border-radius: 8px;
+  font-family: $font-main;
+  font-weight: $weight-bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: filter 0.2s;
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
+
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  
+  input {
+      border: 1px solid #8C342B;
+  }
+}
+
+.checkboxText {
+  font-family: $font-main;
+  font-size: 14px;
+  color: $color-white;
+}
+
+
+@media (max-width: 1024px) {
+  .newsletterSection {
+      padding: 4em 1em;
+  }
+
+  .container {
+    flex-direction: column;
+    text-align: center;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .inputsWrapper {
+    flex-direction: column;
+  }
+}
