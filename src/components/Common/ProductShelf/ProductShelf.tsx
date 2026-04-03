@@ -1,18 +1,17 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { useProducts, type Product } from '../../../hooks/useProducts';
-import { useModal } from '../../../hooks/useModal';
-import { Navigation, Pagination } from 'swiper/modules';
-import { ProductCard } from '../../Common/ProductCard/ProductCard';
-import { ProductModal } from '../../Common/ProductModal/ProductModal'
-import iconArrowLeft from '../../../assets/icons/arrowLeft.svg'
-import iconArrowRight from '../../../assets/icons/arrowRight.svg'
-import 'swiper/css';
-import 'swiper/css/navigation';
-import styles from './ProductShelf.module.scss';
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useProducts, type Product } from "../../../hooks/useProducts";
+import { useModal } from "../../../hooks/useModal";
+import { Navigation, Pagination } from "swiper/modules";
+import { ProductCard } from "../ProductCard/ProductCard";
+import { ProductModal } from "../ProductModal/ProductModal";
+import iconArrowLeft from "../../../assets/icons/arrowLeft.svg";
+import iconArrowRight from "../../../assets/icons/arrowRight.svg";
+import "swiper/css";
+import "swiper/css/navigation";
+import styles from "./ProductShelf.module.scss";
 
 interface ProductShelfProps {
-  selectedCategory?: string; 
+  selectedCategory?: string;
 }
 
 export const ProductShelf = ({ selectedCategory }: ProductShelfProps) => {
@@ -30,7 +29,6 @@ export const ProductShelf = ({ selectedCategory }: ProductShelfProps) => {
   return (
     <section className={styles.shelfSection}>
       <div className={styles.shelfContainer}>
-        
         {products.length > 0 && (
           <button className={`${styles.arrow} ${styles.prev} swiper-prev`}>
             <img src={iconArrowLeft} alt="Anterior" />
@@ -39,11 +37,13 @@ export const ProductShelf = ({ selectedCategory }: ProductShelfProps) => {
 
         <div className={styles.sliderWrapper}>
           {loading ? (
-            <div className={styles.loadingPlaceholder}>Carregando produtos...</div>
+            <div className={styles.loadingPlaceholder}>
+              Carregando produtos...
+            </div>
           ) : products.length > 0 ? (
             <Swiper
               modules={[Navigation, Pagination]}
-              navigation={{ prevEl: '.swiper-prev', nextEl: '.swiper-next' }}
+              navigation={{ prevEl: ".swiper-prev", nextEl: ".swiper-next" }}
               pagination={{ clickable: true }}
               spaceBetween={18}
               slidesPerView={4}
@@ -51,14 +51,14 @@ export const ProductShelf = ({ selectedCategory }: ProductShelfProps) => {
                 320: { slidesPerView: 1.4, spaceBetween: 10 },
                 500: { slidesPerView: 2.2, spaceBetween: 10 },
                 768: { slidesPerView: 3.2 },
-                1024: { slidesPerView: 4 }
+                1024: { slidesPerView: 4 },
               }}
             >
               {products.map((product: Product, index: number) => (
                 <SwiperSlide key={index}>
-                  <ProductCard 
-                    product={product} 
-                    onOpenModal={() => openModal(product)} 
+                  <ProductCard
+                    product={product}
+                    onOpenModal={() => openModal(product)}
                   />
                 </SwiperSlide>
               ))}
@@ -66,7 +66,10 @@ export const ProductShelf = ({ selectedCategory }: ProductShelfProps) => {
           ) : (
             <div className={styles.emptyState}>
               <div className={styles.emptyContent}>
-                <p>Nenhum produto encontrado para "<strong>{selectedCategory}</strong>"</p>
+                <p>
+                  Nenhum produto encontrado para "
+                  <strong>{selectedCategory}</strong>"
+                </p>
               </div>
             </div>
           )}
@@ -79,11 +82,7 @@ export const ProductShelf = ({ selectedCategory }: ProductShelfProps) => {
         )}
       </div>
 
-      <ProductModal 
-        isOpen={isOpen} 
-        product={data} 
-        onClose={closeModal} 
-      />
+      <ProductModal isOpen={isOpen} product={data} onClose={closeModal} />
     </section>
   );
 };

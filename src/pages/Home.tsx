@@ -1,45 +1,34 @@
-import { useState } from 'react';
-import { CategorySection } from '../components/Home/CategorySection/CategorySection';
-import { FullBanner } from '../components/Home/FullBanner/FullBanner';
-import { ProductShelf } from '../components/Home/ProductShelf/ProductShelf';
-import { ShelfTabs } from '../components/Home/ShelfTabs/ShelfTabs';
-import { SectionTitle } from '../components/Common/SectionTitle/SectionTitle';
-import { Partners } from '../components/Home/Partners/Partners';
-import { BtnSeeAll } from '../components/Common/BtnSeeAll/BtnSeeAll';
-import { Brands } from '../components/Home/Brands/Brands';
+import { useState } from "react";
+import { CategorySection } from "../components/Home/CategorySection/CategorySection";
+import { FullBanner } from "../components/Home/FullBanner/FullBanner";
+import { ProductShelf } from "../components/Common/ProductShelf/ProductShelf";
+import { ShelfTabs } from "../components/Home/ShelfTabs/ShelfTabs";
+import { SectionTitle } from "../components/Common/SectionTitle/SectionTitle";
+import { Partners } from "../components/Home/Partners/Partners";
+import { BtnSeeAll } from "../components/Common/BtnSeeAll/BtnSeeAll";
+import { Brands } from "../components/Home/Brands/Brands";
 
 export const Home = () => {
+  const [activeTab, setActiveTab] = useState("CELULAR");
 
-  const [activeTab, setActiveTab] = useState('CELULAR');
-  
   return (
     <>
       <main>
-        <FullBanner/>
-        <CategorySection/>
+        <FullBanner />
+        <CategorySection />
         <section className="container-shelf">
-          <SectionTitle
-            title='Produtos relacionados'
-          />
+          <SectionTitle title="Produtos relacionados" />
           <ShelfTabs activeTab={activeTab} onTabChange={setActiveTab} />
           <ProductShelf selectedCategory={activeTab} />
-          <Partners/>
-          <SectionTitle
-            title='Produtos relacionados'
-          />
-          <BtnSeeAll
-            marginBottom={5}
-          />
-          <ProductShelf/>
-          <Partners/>
-          <Brands/>
-          <SectionTitle
-            title='Produtos relacionados'
-          />
-          <BtnSeeAll
-            marginBottom={5}
-          />
-          <ProductShelf/>
+          <Partners />
+          <SectionTitle title="Produtos relacionados" />
+          <BtnSeeAll marginBottom={5} />
+          <ProductShelf />
+          <Partners />
+          <Brands />
+          <SectionTitle title="Produtos relacionados" />
+          <BtnSeeAll marginBottom={5} />
+          <ProductShelf />
         </section>
       </main>
     </>
