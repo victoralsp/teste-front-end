@@ -1,0 +1,88 @@
+.partnersSection {
+  width: 100%;
+  padding: 35px 0;
+}
+
+.partnersContainer {
+  width: 100%;
+  max-width: 1281px; 
+  margin: 0 auto;
+  display: flex;
+  gap: 13px;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    padding: 0 1em;
+  }
+}
+
+.partnerCard {
+  flex: 1;
+  height: 350px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  background-image: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%), 
+                    url('../../../assets/banner-partners.jpg'); 
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end; 
+}
+
+.overlay {
+  padding: 40px;
+  width: 100%;
+}
+
+.title {
+  font-family: $font-main, sans-serif;
+  font-size: 40px;
+  font-weight: $weight-bold;
+  color: $color-white;
+  margin-bottom: 8px;
+}
+
+.description {
+  font-family: $font-main, sans-serif;
+  font-size: 16px;
+  color: $color-white;
+  margin-bottom: 24px;
+  line-height: 1.4;
+  font-weight: $weight-light;
+  width: 35%;
+}
+
+.confirmButton {
+  width: 144px;
+  height: 48px;
+  background-color: #F7CA11;
+  font-size: 1em;
+  letter-spacing: 8%;
+  color: #271C47; 
+  border: none;
+  border-radius: 6px;
+  font-weight: $weight-bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+@media screen and (max-width: 1300px) {
+    .description {
+        width: 100%;
+    }
+}
+@media screen and (min-width: 1024px) and (max-width: 1300px) {
+    .partnersSection {
+        padding: 35px 1em;
+    }
+
+    .partnerCard {
+        height: auto; 
+    }
+}

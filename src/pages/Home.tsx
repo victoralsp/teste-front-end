@@ -5,6 +5,7 @@ import { ProductShelf } from '../components/Home/ProductShelf/ProductShelf';
 import { ShelfTabs } from '../components/Home/ShelfTabs/ShelfTabs';
 import { Header } from '../components/Layout/Header/Header/Header';
 import { SectionTitle } from '../components/Common/SectionTitle/SectionTitle';
+import { Partners } from '../components/Home/Partners/Partners';
 
 export const Home = () => {
 
@@ -22,6 +23,7 @@ export const Home = () => {
           />
           <ShelfTabs activeTab={activeTab} onTabChange={setActiveTab} />
           <ProductShelf/>
+          <Partners/>
         </section>
       </main>
     </>
