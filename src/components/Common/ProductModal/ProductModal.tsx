@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ReactDOM from "react-dom";
+import { useNavigate } from 'react-router-dom'
 import { type Product } from "../../../hooks/useProducts";
 import { useCart } from "../../../context/CartContext/CartContext";
 import styles from "./ProductModal.module.scss";
@@ -17,6 +18,7 @@ export const ProductModal = ({
 }: ProductModalProps) => {
   const [quantity, setQuantity] = useState(1);
   const { addToCart, showMessage } = useCart();
+  const navigate = useNavigate(); 
 
   if (!isOpen || !product) return null;
 
@@ -28,9 +30,20 @@ export const ProductModal = ({
     addToCart(product, quantity);
     onClose();
     setQuantity(1);
-
     showMessage(`${product.productName} adicionado ao carrinho!`);
   };
+
+  const handleGoToDetails = (e: React.MouseEvent) => {
+    e.preventDefault();
+    onClose()
+    const productSlug = product.productName
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/[\s_-]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+    navigate(`/produto/${productSlug}`, { state: { product } });
+  }
 
   return ReactDOM.createPortal(
     <div className={styles.overlay} onClick={onClose}>
@@ -56,8 +69,12 @@ export const ProductModal = ({
               Many desktop publishing packages and web page editors now many
               desktop publishing
             </p>
-
-            <a href="#" className={styles.moreDetails}>
+            
+            <a 
+              href="#" 
+              className={styles.moreDetails} 
+              onClick={handleGoToDetails}
+            >
               Veja mais detalhes do produto &gt;
             </a>
 
