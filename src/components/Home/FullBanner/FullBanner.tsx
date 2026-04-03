@@ -7,23 +7,30 @@ import 'swiper/css/pagination';
 
 import styles from './FullBanner.module.scss';
 
+interface BannerItem {
+  id: number;
+  imageDesktop: string;
+  imageMobile: string;
+  alt: string;
+}
+const banners: BannerItem[] = [
+  {
+    id: 1,
+    imageDesktop: bannerExemplo,
+    imageMobile: bannerExemplo,
+    alt: 'Venha conhecer nossas promoções'
+  },
+  // eae pessoal da econverse :D 
+  // comente o bloco abaixo se quiser remover o slider e deixar 1 banner fixo
+  {
+    id: 2,
+    imageDesktop: bannerExemplo,
+    imageMobile: bannerExemplo,
+    alt: '50% Off nos produtos'
+  }
+];
+
 export const FullBanner = () => {
-  const banners = [
-    {
-      id: 1,
-      imageDesktop: bannerExemplo,
-      imageMobile: bannerExemplo,
-      alt: 'Venha conhecer nossas promoções'
-    },
-    // eae pessoal da econverse :D 
-    // comente o bloco abaixo se quiser remover o slider e deixar 1 banner fixo
-    {
-      id: 2,
-      imageDesktop: bannerExemplo,
-      imageMobile: bannerExemplo,
-      alt: '50% Off nos produtos'
-    }
-  ];
 
   return (
     <section className={styles.fullBanner}>

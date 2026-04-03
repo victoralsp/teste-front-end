@@ -1,8 +1,14 @@
 import styles from './CategoryNav.module.scss';
 import iconCrown from '@/assets/icons/CrownSimple.svg'; 
 
+interface CategoriaNav {
+  nomeCategoria: string;
+  linkCategoria: string;
+  destaque?: boolean;
+}
+
 export const CategoryNav = () => {
-  const categorias = [
+  const categorias: CategoriaNav[] = [
     { nomeCategoria: 'TODAS CATEGORIAS', linkCategoria: '#' },
     { nomeCategoria: 'SUPERMERCADO', linkCategoria: '#' },
     { nomeCategoria: 'LIVROS', linkCategoria: '#' },

@@ -1,7 +1,7 @@
 import styles from './Partners.module.scss';
 
 export const Partners = () => {
-  const partnerCards = [1, 2]; 
+  const partnerCards: number[] = [1, 2];
 
   return (
     <section className={styles.partnersSection}>

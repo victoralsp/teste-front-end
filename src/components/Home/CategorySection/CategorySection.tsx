@@ -7,7 +7,14 @@ import iconHealth from '@/assets/icons/icone-saude.svg';
 import iconFitness from '@/assets/icons/icone-fitness.svg';
 import iconFashion from '@/assets/icons/icone-moda.svg';
 
-const categories = [
+interface Category {
+  id: number;
+  name: string;
+  icon: string;
+  active?: boolean;
+}
+
+const categories: Category[] = [
   { id: 1, name: 'Tecnologia', icon: iconTech, active: true },
   { id: 2, name: 'Supermercado', icon: iconMarket },
   { id: 3, name: 'Bebidas', icon: iconBebidas },

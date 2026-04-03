@@ -1,7 +1,5 @@
 import { useEffect, useRef } from 'react';
 import styles from './TopBar.module.scss';
-
-
 import iconShield from '@/assets/icons/ShieldCheck.svg';
 import iconTruck from '@/assets/icons/Truck.svg';
 import iconCard from '@/assets/icons/CreditCard.svg';

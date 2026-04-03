@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { TopBar } from '../TopBar/TopBar';
 import { SearchBar } from '../SearchBar/SearchBar';
 import styles from './Header.module.scss';
-
-
 import menuMobileIcon from '@/assets/icons/menuMobileIcon.svg';
 import iconBox from '@/assets/icons/Group.svg';
 import iconHeart from '@/assets/icons/Heart.svg';
