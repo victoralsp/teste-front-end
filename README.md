@@ -25,12 +25,16 @@ Este repositório contém a solução para o desafio técnico da Agência Econve
     git clone https://github.com/victoralsp/teste-front-end.git
     ```
 
-2.  **Instalar dependências:**
+2.  **Acessar a pasta:**
+    ```bash
+    cd teste-front-end
+    ```
+3.  **Instalar dependências:**
     ```bash
     npm install
     ```
 
-3.  **Executar o projeto:**
+4.  **Executar o projeto:**
     ```bash
     npm run dev
     ```
