@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useWindowSize } from '../../../../hooks/useWindowSize';
 import styles from './TopBar.module.scss';
 import iconShield from '@/assets/icons/ShieldCheck.svg';
 import iconTruck from '@/assets/icons/Truck.svg';
@@ -7,6 +8,7 @@ import iconCard from '@/assets/icons/CreditCard.svg';
 
 export const TopBar = () => {
   const scrollRef = useRef<HTMLUListElement>(null);
+  const { isMobile } = useWindowSize();
   
   // adiciona slider com autoplay nas informações do top bar 
     useEffect(() => {
@@ -17,7 +19,7 @@ export const TopBar = () => {
       const totalDeItens = 3;
   
       const autoPlay = setInterval(() => {
-        if (window.innerWidth <= 768) {
+        if (isMobile) {
           slideAtual = (slideAtual + 1) % totalDeItens;
           
           containerInfosTopBar.scrollTo({
@@ -28,7 +30,7 @@ export const TopBar = () => {
       }, 3000);
   
       return () => clearInterval(autoPlay); 
-    }, []);
+    }, [isMobile]);
 
 return (
     <section className={styles.topBar} aria-label="Benefícios e segurança">
