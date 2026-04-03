@@ -1,0 +1,58 @@
+import { useState } from 'react';
+import ReactDOM from 'react-dom';
+import { type Product } from '../../../hooks/useProducts';
+import styles from './ProductModal.module.scss';
+
+interface ProductModalProps {
+  isOpen: boolean;
+  product: Product | null;
+  onClose: () => void;
+}
+
+export const ProductModal = ({ isOpen, product, onClose }: ProductModalProps) => {
+  const [quantity, setQuantity] = useState(1);
+
+  if (!isOpen || !product) return null
+
+  const handleIncrement = () => setQuantity(prev => prev + 1)
+  const handleDecrement = () => setQuantity(prev => (prev > 1 ? prev - 1 : 1))
+
+  return ReactDOM.createPortal(
+    <div className={styles.overlay} onClick={onClose}>
+      <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+        <button className={styles.closeButton} onClick={onClose}>✕</button>
+
+        <div className={styles.modalBody}>
+          <div className={styles.imageSection}>
+            <img src={product.photo} alt={product.productName} />
+          </div>
+
+          <div className={styles.infoSection}>
+            <h2 className={styles.productName}>{product.productName}</h2>
+            <p className={styles.price}>
+              {product.price.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+              })}
+            </p>
+            <p className={styles.description}>
+              Many desktop publishing packages and web page editors now many desktop publishing
+            </p>
+            
+            <a href="#" className={styles.moreDetails}>Veja mais detalhes do produto &gt;</a>
+
+            <div className={styles.actions}>
+              <div className={styles.quantitySelector}>
+                <button onClick={handleDecrement}>-</button>
+                <span>{quantity.toString().padStart(2, '0')}</span>
+                <button onClick={handleIncrement}>+</button>
+              </div>
+              <button className={styles.buyButton}>COMPRAR</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>,
+    document.body
+  );
+};

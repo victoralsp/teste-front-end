@@ -1,31 +1,30 @@
+import { type Product } from '../../../hooks/useProducts'
 import styles from './ProductCard.module.scss';
-
-interface Product {
-  productName: string;
-  descriptionShort: string;
-  photo: string;
-  price: number;
-}
 
 interface ProductCardProps {
   product: Product;
+  onOpenModal: () => void; 
 }
 
-export const ProductCard = ({ product }: ProductCardProps) => {
+export const ProductCard = ({ product, onOpenModal }: ProductCardProps) => {
   const formattedPrice = product.price.toLocaleString('pt-BR', {
     style: 'currency',
     currency: 'BRL',
   });
 
-const installmentValue = (product.price / 2).toLocaleString('pt-BR', {
+  const installmentValue = (product.price / 2).toLocaleString('pt-BR', {
     style: 'currency',
     currency: 'BRL',
   });
 
- return (
+  return (
     <article className={styles.cardContainer}>
-      <div className={styles.imageWrapper}>
-        <img src={product.photo} alt={product.productName} className={styles.productImage} />
+      <div className={styles.imageWrapper} onClick={onOpenModal} style={{ cursor: 'pointer' }}>
+        <img 
+          src={product.photo} 
+          alt={product.productName} 
+          className={styles.productImage} 
+        />
       </div>
 
       <div className={styles.productInfo}>
@@ -42,7 +41,8 @@ const installmentValue = (product.price / 2).toLocaleString('pt-BR', {
         
         <span className={styles.freeShippingLabel}>Frete grátis</span>
 
-        <button className={styles.buyButton}>
+        {/* dispara e abre o modal  */}
+        <button className={styles.buyButton} onClick={onOpenModal}>
           Comprar
         </button>
       </div>

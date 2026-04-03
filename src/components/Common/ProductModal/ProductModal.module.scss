@@ -1,0 +1,150 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modalContent {
+  background: #fff;
+  width: 90%;
+  max-width: 769px;
+  height: 299px;
+  position: relative;
+  padding: 20px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .closeButton {
+    right: 1.3em;
+    top: 1em;
+    color: #707070;
+    font-size: 22px;
+    font-weight: 600;
+    position: absolute;
+  }
+}
+
+.modalBody {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+}
+
+.imageSection {
+  flex: 1;
+  text-align: center;
+  img {
+    width: 100%;
+    max-width: 247px;
+    object-fit: contain;
+  }
+}
+
+.infoSection {
+  flex: 1.2;
+  .productName {
+    font-size: 20px;
+    color: $color-btn-see-all; 
+    font-weight: $weight-normal;
+    letter-spacing: 5%;
+    margin-bottom: 3px;
+    display: -webkit-box;
+     -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    max-width: 320px;
+    overflow: hidden;
+  }
+  .price {
+    font-size: 20px;
+    font-weight: $weight-semibold;
+    color: $color-btn-see-all; 
+    margin-bottom: 20px;
+}
+.description {
+    font-size: 10px;
+    color: #9F9F9F;
+    font-weight: $weight-medium;
+    max-width: 250px;
+    font-family: $font-descriptions;
+    margin-bottom: 6px;
+}
+.moreDetails {
+    display: block;
+    font-size: 11px;
+    font-family: $font-descriptions;
+    font-weight: $weight-semibold;
+    color: #3442B5;
+    margin-bottom: 25px;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.quantitySelector {
+  display: flex;
+  align-items: center;
+  border: 1px solid #D9D9D9;
+  border-radius: 4px;
+  height: 36px;
+  justify-content: center;
+  width: 110px;
+  
+  button {
+    background: none;
+    border: none;
+    padding: 0 10px;
+    color: #041E50;
+    cursor: pointer;
+    font-size: 25px;
+}
+    span {
+    padding: 0 10px;
+    font-weight: $weight-medium;
+    font-size: 16px;
+    color: #041E50;
+    width: 33px;
+  }
+}
+
+.buyButton {
+  flex: 1;
+  background: #F7CA11;
+//   padding: 11px 65px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  height: 36px;
+  font-weight: $weight-bold;
+  max-width: 188px;
+  cursor: pointer;
+  color: #041E50;
+}
+
+@media screen and (max-width: 768px) {
+    .modalBody {
+        gap: 20px;
+    }
+}
+@media screen and (max-width: 550px) {
+    .modalContent {
+        height: auto;
+        padding: 40px 20px;
+    }
+
+    .modalBody {
+        flex-direction: column;
+    }
+}

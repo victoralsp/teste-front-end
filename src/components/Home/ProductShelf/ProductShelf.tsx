@@ -1,7 +1,9 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useProducts } from '../../../hooks/useProducts';
+import { useProducts, type Product } from '../../../hooks/useProducts';
+import { useModal } from '../../../hooks/useModal';
 import { Navigation, Pagination } from 'swiper/modules';
 import { ProductCard } from '../../Common/ProductCard/ProductCard';
+import { ProductModal } from '../../Common/ProductModal/ProductModal'
 import iconArrowLeft from '../../../assets/icons/arrowLeft.svg'
 import iconArrowRight from '../../../assets/icons/arrowRight.svg'
 import 'swiper/css';
@@ -10,8 +12,9 @@ import styles from './ProductShelf.module.scss';
 
 
 export const ProductShelf = () => {
-
   const { products, loading, error } = useProducts();
+  
+  const { isOpen, data, openModal, closeModal } = useModal<Product>();
 
   if (error) {
     return (
@@ -52,7 +55,10 @@ export const ProductShelf = () => {
             >
               {products.map((product: Product, index: number) => (
                 <SwiperSlide key={index}>
-                  <ProductCard product={product} />
+                  <ProductCard 
+                    product={product} 
+                    onOpenModal={() => openModal(product)} 
+                  />
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -62,8 +68,13 @@ export const ProductShelf = () => {
         <button className={`${styles.arrow} ${styles.next} swiper-next`}>
           <img src={iconArrowRight} alt="Próximo" />
         </button>
-
       </div>
+
+      <ProductModal 
+        isOpen={isOpen} 
+        product={data} 
+        onClose={closeModal} 
+      />
     </section>
   );
 };
