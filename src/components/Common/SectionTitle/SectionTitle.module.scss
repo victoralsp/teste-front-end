@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 40px 0 20px;
+  margin: 40px 0 5px;
   position: relative;
 
   &::before, &::after {
@@ -26,8 +26,7 @@
 
 @media (max-width: 1300px) {
   .titleContainer {
-    padding: 40px 1em 0;
-    // margin: 40px 1em;
+    padding: 0 1em;
   } 
 }
 

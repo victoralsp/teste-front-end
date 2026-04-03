@@ -1,11 +1,12 @@
 .cardContainer {
   background-color: $color-white;
-  padding: 20px;
+  padding: .8em;
   border-radius: 10px;
   box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.22);
   display: flex;
   flex-direction: column;
-  height: 100%;
+  max-height: 500px;
+  max-width: 304px;
   transition: transform 0.2s ease;
 
   &:hover {
@@ -15,16 +16,15 @@
 
 .imageWrapper {
   width: 100%;
-  height: 220px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 15px;
 
   .productImage {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+    margin: 12px 0;
   }
 }
 
@@ -32,62 +32,68 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1; 
+  justify-content: space-between;
 }
 
 .productName {
   font-family: $font-main;
   font-size: 15px;
-  color: #3F3F40;
-  font-weight: $weight-medium;
-  line-height: 1.4;
+  color: $infos-product-color;
+  font-weight: $weight-light;
+  line-height: 1.5;
   margin-bottom: 12px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  width: 75%;
+  min-height: 46px;
 }
 
 .priceContainer {
   display: flex;
   flex-direction: column;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .originalPrice {
-  font-size: 14px;
-  color: #808080;
+  font-size: 1em;
+  color: rgba(128, 128, 128, 1);
+  font-weight: $weight-normal;
   text-decoration: line-through;
 }
 
 .currentPrice {
   font-size: 20px;
   font-weight: $weight-bold;
-  color: #3F3F40;
+  color: $infos-product-color;
 }
 
 .installmentsInfo {
   font-size: 12px;
-  color: #3F3F40;
+  color: $infos-product-color;
   margin-bottom: 8px;
+  font-weight: $weight-normal;
 }
 
 .freeShippingLabel {
   font-size: 12px;
-  color: $color-highlight-purple;
-  font-weight: $weight-semibold;
+  color: rgba(52, 66, 181, 1);
+  font-weight: $weight-normal;
   margin-bottom: 15px;
 }
 
 .buyButton {
   margin-top: auto; 
   width: 100%;
-  padding: 12px 0;
+  padding: 11.5px 0;
   background-color: #3442B5; 
   color: $color-white;
   border: none;
   border-radius: 4px;
   font-weight: $weight-bold;
   text-transform: uppercase;
+  font-size: 14px;
   cursor: pointer;
   transition: filter 0.2s;
 

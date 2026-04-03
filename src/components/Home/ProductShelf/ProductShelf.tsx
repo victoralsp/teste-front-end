@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import productsData from '@/data/products.json';
-import { Navigation } from 'swiper/modules';
+import productsData from '../../../data/products.json';
+import { Navigation, Pagination } from 'swiper/modules';
 import { ProductCard } from '../../Common/ProductCard/ProductCard';
 import iconArrowLeft from '../../../assets/icons/arrowLeft.svg'
 import iconArrowRight from '../../../assets/icons/arrowRight.svg'
@@ -26,17 +26,20 @@ export const ProductShelf = () => {
 
         <div className={styles.sliderWrapper}>
           <Swiper
-            modules={[Navigation]}
+            modules={[Navigation, Pagination]}
             navigation={{
               prevEl: '.swiper-prev', 
               nextEl: '.swiper-next'
             }}
+            pagination={{ clickable: true }}
             spaceBetween={18}
             slidesPerView={4}
             watchSlidesProgress={true}
             breakpoints={{
-              320: { slidesPerView: 1.2, spaceBetween: 10 },
-              768: { slidesPerView: 2.5 },
+              320: { slidesPerView: 1.4, spaceBetween: 10 },
+              // 375: { slidesPerView: 2, spaceBetween: 10 },
+              500: { slidesPerView: 2.2, spaceBetween: 10 },
+              768: { slidesPerView: 3.2 },
               1024: { slidesPerView: 4 }
             }}
           >

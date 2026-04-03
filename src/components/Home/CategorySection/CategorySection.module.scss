@@ -80,3 +80,10 @@
     font-size: 14px;
   }
 }
+
+
+@media screen and (min-width: 1024px) and (max-width: 1300px) {
+  .categorySection {
+    padding: 40px 1em;
+  }
+}

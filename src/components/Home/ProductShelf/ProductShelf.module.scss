@@ -57,6 +57,19 @@
   }
 }
 
+:global(.swiper-pagination) {
+  position: relative !important; 
+  margin-top: 10px !important; 
+  bottom: 0 !important;
+  display: none;
+}
+
+
+:global(.swiper-pagination-bullet-active) {
+    background: #3442B5; 
+}
+
+
 @media screen and (max-width: 1364px) {
   .shelfContainer {
     padding: 0 40px;
@@ -69,7 +82,15 @@
   }
   
   .shelfContainer {
-    padding: 0 15px;
+    padding: 0px;
+  }
+
+  .sliderWrapper {
+    padding-bottom: 20px; 
+  }
+
+  :global(.swiper-pagination) {
+    display: block;
   }
 }
 

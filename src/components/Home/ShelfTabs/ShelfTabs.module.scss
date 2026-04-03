@@ -55,3 +55,15 @@
     white-space: nowrap;
   }
 }
+
+@media (max-width: 1024px) {
+  .tabButton {
+    padding: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tabButton {
+    font-size: clamp(8px, 2vw, 14px);
+  }
+}
