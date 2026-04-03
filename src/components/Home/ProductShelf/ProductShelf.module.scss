@@ -17,6 +17,7 @@
   max-width: 1270px;
   margin: 0 auto;
   position: relative;
+  min-height: 529px;
   overflow: hidden; 
   padding: 0px 0;  
   
@@ -29,6 +30,50 @@
   :global(.swiper-slide) {
     height: auto; 
   }
+}
+
+.emptyState {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #f9f9f9;
+  height: 529px;
+
+  .emptyContent {
+    color: #3442B5;
+    font-family: sans-serif;
+    
+    span {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 10px;
+    }
+    
+    p {
+      font-size: 1.2rem;
+      font-weight: 600;
+      
+      strong {
+        text-transform: uppercase;
+        color: $color-primary-yellow;
+      }
+    }
+  }
+}
+
+.loadingPlaceholder {
+  text-align: center;
+  transform: translateY(15em);
+}
+.loading {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #3442B5;
 }
 
 .arrow {

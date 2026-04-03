@@ -11,15 +11,18 @@ import 'swiper/css/navigation';
 import styles from './ProductShelf.module.scss';
 
 
-export const ProductShelf = () => {
-  const { products, loading, error } = useProducts();
-  
+interface ProductShelfProps {
+  selectedCategory?: string; 
+}
+
+export const ProductShelf = ({ selectedCategory }: ProductShelfProps) => {
+  const { products, loading, error } = useProducts(selectedCategory);
   const { isOpen, data, openModal, closeModal } = useModal<Product>();
 
   if (error) {
     return (
       <div className={styles.errorContainer}>
-        <p>Ocorreu um erro ao carregar os produtos. Tente novamente mais tarde.</p>
+        <p>Ocorreu um erro ao carregar os produtos.</p>
       </div>
     );
   }
@@ -28,24 +31,22 @@ export const ProductShelf = () => {
     <section className={styles.shelfSection}>
       <div className={styles.shelfContainer}>
         
-        <button className={`${styles.arrow} ${styles.prev} swiper-prev`}>
-          <img src={iconArrowLeft} alt="Anterior" />
-        </button>
+        {products.length > 0 && (
+          <button className={`${styles.arrow} ${styles.prev} swiper-prev`}>
+            <img src={iconArrowLeft} alt="Anterior" />
+          </button>
+        )}
 
         <div className={styles.sliderWrapper}>
           {loading ? (
-            <div className={styles.loading}>Carregando produtos...</div>
-          ) : (
+            <div className={styles.loadingPlaceholder}>Carregando produtos...</div>
+          ) : products.length > 0 ? (
             <Swiper
               modules={[Navigation, Pagination]}
-              navigation={{
-                prevEl: '.swiper-prev', 
-                nextEl: '.swiper-next'
-              }}
+              navigation={{ prevEl: '.swiper-prev', nextEl: '.swiper-next' }}
               pagination={{ clickable: true }}
               spaceBetween={18}
               slidesPerView={4}
-              watchSlidesProgress={true}
               breakpoints={{
                 320: { slidesPerView: 1.4, spaceBetween: 10 },
                 500: { slidesPerView: 2.2, spaceBetween: 10 },
@@ -62,12 +63,20 @@ export const ProductShelf = () => {
                 </SwiperSlide>
               ))}
             </Swiper>
+          ) : (
+            <div className={styles.emptyState}>
+              <div className={styles.emptyContent}>
+                <p>Nenhum produto encontrado para "<strong>{selectedCategory}</strong>"</p>
+              </div>
+            </div>
           )}
         </div>
 
-        <button className={`${styles.arrow} ${styles.next} swiper-next`}>
-          <img src={iconArrowRight} alt="Próximo" />
-        </button>
+        {products.length > 0 && (
+          <button className={`${styles.arrow} ${styles.next} swiper-next`}>
+            <img src={iconArrowRight} alt="Próximo" />
+          </button>
+        )}
       </div>
 
       <ProductModal 

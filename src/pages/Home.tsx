@@ -22,7 +22,7 @@ export const Home = () => {
             title='Produtos relacionados'
           />
           <ShelfTabs activeTab={activeTab} onTabChange={setActiveTab} />
-          <ProductShelf/>
+          <ProductShelf selectedCategory={activeTab} />
           <Partners/>
           <SectionTitle
             title='Produtos relacionados'
