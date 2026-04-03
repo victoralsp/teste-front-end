@@ -22,7 +22,7 @@ Este repositório contém a solução para o desafio técnico da Agência Econve
 
 1.  **Clonar o repositório:**
     ```bash
-    git clone https://github.com/victoralsp/teste-front-end.git
+    git clone [https://github.com/victoralsp/teste-front-end.git](https://github.com/victoralsp/teste-front-end.git)
     ```
 
 2.  **Acessar a pasta:**
@@ -72,6 +72,20 @@ O componente de abas da vitrine é totalmente funcional, realizando a filtragem 
 * **TopBar Slider**: Em dispositivos móveis, as informações da barra superior são exibidas em um carrossel para otimização de espaço.
 * **Menu Hamburger**: Implementação de menu lateral retrátil para navegação mobile.
 * **FullBanner Slider**: Banner principal estruturado como slider para suporte a múltiplas comunicações.
+
+---
+
+## Guia de Testes das Implementações
+
+Para validar as funcionalidades implementadas:
+
+1. **FullBanner Slider:** O banner principal da Home é um carrossel interativo. Verifique a navegação entre os banners através das setas laterais ou paginação (bullets).
+2. **Vitrine e Filtros (ShelfTabs):** Na Home, altere entre as abas de categorias. A vitrine atualiza os produtos dinamicamente. Caso uma categoria não possua itens, um estado vazio é exibido.
+3. **Modal de Compra (Quick View):** Clique no botão "Comprar" de qualquer card. O modal abrirá com os dados específicos do produto selecionado.
+4. **Persistência do Carrinho:** Ao adicionar um item ao carrinho pelo modal, o contador no Header será atualizado. O valor se mantém ao navegar entre as páginas.
+5. **Navegação para PDP:** No modal, clique em "Veja mais detalhes". O usuário será direcionado para a rota `/produto/:id`, renderizando a página de detalhes com os dados do estado.
+6. **Newsletter:** No rodapé, o formulário valida os campos e exibe mensagens de feedback integradas ao sistema de notificações.
+7. **Responsividade:** Através do modo de inspeção do navegador, verifique o comportamento dos sliders (TopBar e FullBanner) e do Menu Hamburger em resoluções mobile.
 
 ---
 
