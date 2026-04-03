@@ -47,6 +47,7 @@
   width: 100%;
 }
 
+
 .userActions {
   grid-area: actions;
 
@@ -54,22 +55,44 @@
     display: flex;
     align-items: center;
     gap: 1.969em; 
-    max-height: 2em;
     list-style: none;
 
-    img {
-      width: $size-icon-header;
-      height: $size-icon-header;
+    .cartItem {
+      display: flex;
+      align-items: center;
+    }
+    .cartIconWrapper {
+      position: relative; 
+      display: flex;
+      align-items: center;
       cursor: pointer;
-      transition: transform 0.2s;
 
-      &:hover {
-        transform: scale(1.1);
+      img {
+        width: $size-icon-header;
+        height: $size-icon-header;
+        transition: transform 0.2s;
+        &:hover { transform: scale(1.1); }
       }
     }
 
-    .iconeBoxHeader {
-      width: $size-icon-box-header;
+
+    .cartBadge {
+      position: absolute;
+      top: -9px;
+      padding: 1em;
+      right: -10px;
+      background-color: #FFC400;
+      color: #041E50;
+      font-size: 10px;
+      font-weight: bold;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      pointer-events: none;
     }
   }
 }

@@ -1,7 +1,8 @@
-import { useState } from 'react';
-import ReactDOM from 'react-dom';
-import { type Product } from '../../../hooks/useProducts';
-import styles from './ProductModal.module.scss';
+import { useState } from "react";
+import ReactDOM from "react-dom";
+import { type Product } from "../../../hooks/useProducts";
+import { useCart } from "../../../context/CartContext/CartContext";
+import styles from "./ProductModal.module.scss";
 
 interface ProductModalProps {
   isOpen: boolean;
@@ -9,18 +10,34 @@ interface ProductModalProps {
   onClose: () => void;
 }
 
-export const ProductModal = ({ isOpen, product, onClose }: ProductModalProps) => {
+export const ProductModal = ({
+  isOpen,
+  product,
+  onClose,
+}: ProductModalProps) => {
   const [quantity, setQuantity] = useState(1);
+  const { addToCart, showMessage } = useCart();
 
-  if (!isOpen || !product) return null
+  if (!isOpen || !product) return null;
 
-  const handleIncrement = () => setQuantity(prev => prev + 1)
-  const handleDecrement = () => setQuantity(prev => (prev > 1 ? prev - 1 : 1))
+  const handleIncrement = () => setQuantity((prev) => prev + 1);
+  const handleDecrement = () =>
+    setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+
+  const handleConfirmPurchase = () => {
+    addToCart(product, quantity);
+    onClose();
+    setQuantity(1);
+
+    showMessage(`${product.productName} adicionado ao carrinho!`);
+  };
 
   return ReactDOM.createPortal(
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-        <button className={styles.closeButton} onClick={onClose}>✕</button>
+        <button className={styles.closeButton} onClick={onClose}>
+          ✕
+        </button>
 
         <div className={styles.modalBody}>
           <div className={styles.imageSection}>
@@ -30,29 +47,37 @@ export const ProductModal = ({ isOpen, product, onClose }: ProductModalProps) =>
           <div className={styles.infoSection}>
             <h2 className={styles.productName}>{product.productName}</h2>
             <p className={styles.price}>
-              {product.price.toLocaleString('pt-BR', {
-                style: 'currency',
-                currency: 'BRL',
+              {product.price.toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL",
               })}
             </p>
             <p className={styles.description}>
-              Many desktop publishing packages and web page editors now many desktop publishing
+              Many desktop publishing packages and web page editors now many
+              desktop publishing
             </p>
-            
-            <a href="#" className={styles.moreDetails}>Veja mais detalhes do produto &gt;</a>
+
+            <a href="#" className={styles.moreDetails}>
+              Veja mais detalhes do produto &gt;
+            </a>
 
             <div className={styles.actions}>
               <div className={styles.quantitySelector}>
                 <button onClick={handleDecrement}>-</button>
-                <span>{quantity.toString().padStart(2, '0')}</span>
+                <span>{quantity.toString().padStart(2, "0")}</span>
                 <button onClick={handleIncrement}>+</button>
               </div>
-              <button className={styles.buyButton}>COMPRAR</button>
+              <button
+                className={styles.buyButton}
+                onClick={handleConfirmPurchase}
+              >
+                COMPRAR
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>,
-    document.body
+    document.body,
   );
 };
