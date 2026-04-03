@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import productsData from '../../../data/products.json';
+import { useProducts } from '../../../hooks/useProducts';
 import { Navigation, Pagination } from 'swiper/modules';
 import { ProductCard } from '../../Common/ProductCard/ProductCard';
 import iconArrowLeft from '../../../assets/icons/arrowLeft.svg'
@@ -8,14 +8,19 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import styles from './ProductShelf.module.scss';
 
-interface ProductData {
-  productName: string;
-  descriptionShort: string;
-  photo: string;
-  price: number;
-}
 
 export const ProductShelf = () => {
+
+  const { products, loading, error } = useProducts();
+
+  if (error) {
+    return (
+      <div className={styles.errorContainer}>
+        <p>Ocorreu um erro ao carregar os produtos. Tente novamente mais tarde.</p>
+      </div>
+    );
+  }
+
   return (
     <section className={styles.shelfSection}>
       <div className={styles.shelfContainer}>
@@ -25,30 +30,33 @@ export const ProductShelf = () => {
         </button>
 
         <div className={styles.sliderWrapper}>
-          <Swiper
-            modules={[Navigation, Pagination]}
-            navigation={{
-              prevEl: '.swiper-prev', 
-              nextEl: '.swiper-next'
-            }}
-            pagination={{ clickable: true }}
-            spaceBetween={18}
-            slidesPerView={4}
-            watchSlidesProgress={true}
-            breakpoints={{
-              320: { slidesPerView: 1.4, spaceBetween: 10 },
-              // 375: { slidesPerView: 2, spaceBetween: 10 },
-              500: { slidesPerView: 2.2, spaceBetween: 10 },
-              768: { slidesPerView: 3.2 },
-              1024: { slidesPerView: 4 }
-            }}
-          >
-            {productsData.products.map((product: ProductData, index: number) => (
-              <SwiperSlide key={index}>
-                <ProductCard product={product} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          {loading ? (
+            <div className={styles.loading}>Carregando produtos...</div>
+          ) : (
+            <Swiper
+              modules={[Navigation, Pagination]}
+              navigation={{
+                prevEl: '.swiper-prev', 
+                nextEl: '.swiper-next'
+              }}
+              pagination={{ clickable: true }}
+              spaceBetween={18}
+              slidesPerView={4}
+              watchSlidesProgress={true}
+              breakpoints={{
+                320: { slidesPerView: 1.4, spaceBetween: 10 },
+                500: { slidesPerView: 2.2, spaceBetween: 10 },
+                768: { slidesPerView: 3.2 },
+                1024: { slidesPerView: 4 }
+              }}
+            >
+              {products.map((product: Product, index: number) => (
+                <SwiperSlide key={index}>
+                  <ProductCard product={product} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          )}
         </div>
 
         <button className={`${styles.arrow} ${styles.next} swiper-next`}>
