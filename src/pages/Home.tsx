@@ -7,6 +7,7 @@ import { Header } from '../components/Layout/Header/Header/Header';
 import { SectionTitle } from '../components/Common/SectionTitle/SectionTitle';
 import { Partners } from '../components/Home/Partners/Partners';
 import { BtnSeeAll } from '../components/Common/BtnSeeAll/BtnSeeAll';
+import { Brands } from '../components/Home/Brands/Brands';
 
 export const Home = () => {
 
@@ -33,6 +34,7 @@ export const Home = () => {
           />
           <ProductShelf/>
           <Partners/>
+          <Brands/>
         </section>
       </main>
     </>
