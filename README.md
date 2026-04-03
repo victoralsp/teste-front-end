@@ -22,7 +22,7 @@ Este repositório contém a solução para o desafio técnico da Agência Econve
 
 1.  **Clonar o repositório:**
     ```bash
-    git clone [https://github.com/victoralsp/teste-front-end.git](https://github.com/victoralsp/teste-front-end.git)
+    git clone https://github.com/victoralsp/teste-front-end.git
     ```
 
 2.  **Acessar a pasta:**
